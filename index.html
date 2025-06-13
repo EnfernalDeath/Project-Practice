@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konami HTML Training</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            transition: background 0.8s;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .welcome {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(90deg, #43cea2, #185a9d);
+            padding: 25px 60px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            animation: fadeInDown 1.2s;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            letter-spacing: 2px;
+        }
+        h1 {
+            background: linear-gradient(90deg, #ff758c, #ff7eb3);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            font-size: 2rem;
+            animation: fadeIn 1.2s 0.8s backwards;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            color: #333;
+            margin: 30px 0 15px 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .hobbies, .info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .box {
+            background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%);
+            color: #fff;
+            padding: 18px 28px;
+            border-radius: 18px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            box-shadow: 0 4px 16px 0 rgba(255, 121, 63, 0.15);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            border: none;
+            outline: none;
+            min-width: 140px;
+            text-align: center;
+        }
+        .box:hover, .box.active {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 32px 0 rgba(255, 121, 63, 0.25);
+            background: linear-gradient(120deg, #ff758c 0%, #ff7eb3 100%);
+        }
+        .info-content {
+            margin-top: 10px;
+            background: #fff8;
+            border-radius: 15px;
+            padding: 18px 30px;
+            color: #333;
+            font-size: 1.1rem;
+            min-height: 40px;
+            box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.08);
+            display: none;
+            animation: fadeIn 0.7s;
+        }
+        .info-content.active {
+            display: block;
+        }
+        .outro {
+            margin-top: 40px;
+            font-size: 1.3rem;
+            color: #fff;
+            background: linear-gradient(90deg, #43cea2, #185a9d);
+            padding: 18px 40px;
+            border-radius: 20px;
+            animation: fadeInUp 1.2s;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            letter-spacing: 1px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-60px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="welcome">Welcome to the website!</div>
+        <h1>My Name Is Konami Yson Domingo</h1>
+        
+        <div class="section-title">Pick a Hobby</div>
+        <div class="hobbies">
+            <div class="box">🎮 Playing Games</div>
+            <div class="box">📖 Reading Webnovel/Manga/Manhwa/Manhua</div>
+            <div class="box">😴 Sleeping</div>
+            <div class="box">🍔 Eating</div>
+            <div class="box">📺 Watching Contents</div>
+        </div>
+        
+        <div class="section-title">Choose Information</div>
+        <div class="info">
+            <button class="box" onclick="showInfo('number')">📱 My Number</button>
+            <button class="box" onclick="showInfo('social')">🌐 Social Media</button>
+            <button class="box" onclick="showInfo('school')">🏫 School</button>
+        </div>
+        <div id="info-number" class="info-content">
+            09XX-XXX-XXXX
+        </div>
+        <div id="info-social" class="info-content">
+            Facebook: <a href="https://facebook.com/" target="_blank">facebook.com/konami</a><br>
+            Instagram: <a href="https://instagram.com/" target="_blank">@konami</a>
+        </div>
+        <div id="info-school" class="info-content">
+            Example University, BS Computer Science
+        </div>
+        
+        <div class="outro">Thank you for visiting the site!</div>
+    </div>
+    <script>
+        function showInfo(type) {
+            document.querySelectorAll('.info-content').forEach(el => el.classList.remove('active'));
+            if(type === 'number') {
+                document.getElementById('info-number').classList.add('active');
+            } else if(type === 'social') {
+                document.getElementById('info-social').classList.add('active');
+            } else if(type === 'school') {
+                document.getElementById('info-school').classList.add('active');
+            }
+        }
+        // Optional: Add active effect to hobby boxes
+        document.querySelectorAll('.hobbies .box').forEach(box => {
+            box.addEventListener('click', function() {
+                document.querySelectorAll('.hobbies .box').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
